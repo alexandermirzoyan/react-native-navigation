@@ -14,7 +14,14 @@ const FeedScreen = ({navigation}) => (
     />
   </View>
 );
-const ProfileScreen = () => <Text>Profile Screen</Text>;
+const ProfileScreen = ({navigation}) => (
+  <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <Button
+      title="Go to User details"
+      onPress={() => navigation.navigate('UserDetails')}
+    />
+  </View>
+);
 const SettingsScreen = ({navigation}) => (
   <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
     <Button title="Go to Wifi" onPress={() => navigation.navigate('WiFi')} />
@@ -34,6 +41,10 @@ const WiFiSettingsUcomScreen = ({navigation}) => (
       title="Go to Profile Tab"
       onPress={() => navigation.navigate('Profile')}
     />
+    <Button
+      title="Go to User Details"
+      onPress={() => navigation.navigate('UserDetails')}
+    />
   </View>
 );
 
@@ -43,11 +54,24 @@ const FeedStackScreen = () => (
   </FeedStack.Navigator>
 );
 
+const UserDetailsScreen = ({navigation}) => (
+  <Button onPress={() => navigation.navigate('UserImage')} title="User image" />
+);
+
+const UserImageScreen = ({navigation}) => (
+  <Button
+    onPress={() => navigation.navigate('UserDetails')}
+    title="Go to user details"
+  />
+);
+
 const ProfileStack = createStackNavigator();
 
 const ProfileStackScreen = () => (
   <ProfileStack.Navigator>
     <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+    <ProfileStack.Screen name="UserDetails" component={UserDetailsScreen} />
+    <ProfileStack.Screen name="UserImage" component={UserImageScreen} />
   </ProfileStack.Navigator>
 );
 
